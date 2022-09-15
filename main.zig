@@ -62,18 +62,17 @@ const Ulid = struct {
 fn to_binary(value: u128) []u1 {
     var v = value;
     var result: [ULID_BIT_LEN]u1 = undefined;
-    var j: u8 = 0;
     var bit: u1 = 0;
-    while (j < ULID_BIT_LEN) {
-        std.debug.print("{}", .{result[j]});
-        j += 1;
-    }
     std.debug.print("\n", .{});
     var i: u8 = 0;
     while (i < ULID_BIT_LEN) {
         bit = @intCast(u1, v & 1); 
         std.debug.print("{}", .{bit});
-        result[ULID_BIT_LEN - i - 1] = bit;
+        if (bit == 1) {
+            result[ULID_BIT_LEN - i - 1] = 1;
+        } else {
+            result[ULID_BIT_LEN - i - 1] = 0;
+        }
         v = v >> 1;
         i += 1;
    }
@@ -85,7 +84,7 @@ pub fn main() !void {
     var gen = Ulid.new();
     const ulid = try gen.ulid();
     std.debug.print("{}\n", .{ulid.len});
-    for (ulid) |x| {
-        std.debug.print("{}", .{x});
+    for (ulid) |c| {
+        std.debug.print("{d}", .{c});
     }
 }
