@@ -103,4 +103,11 @@ test {
     //          01GD0N0JW9FHTES689BKKQVSHX
     std.debug.print("{s}\n", .{encoded1});
     std.debug.print("{s}\n", .{encoded2});
+
+    const example = 2010743602507803096168807030878758460;
+    const example_bin = to_binary(example);
+    const example_encoded = encode_base32(example);
+
+    try std.testing.expectEqualSlices(u8, &example_bin, "00000001100000110100000101010000010010111000100101111100011101001110110010011001000010010101110011100111011111011110011000111100");
+    try std.testing.expectEqualSlices(u8, &example_encoded, "01GD0N0JW9FHTES689BKKQVSHW");
 }
