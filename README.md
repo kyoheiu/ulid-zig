@@ -2,7 +2,7 @@
 
 Simple implementation of ULID for zig.
 
-This library stated as a learning project, but IMO it can be used as it is.
+This library started as a learning project, but IMO it can be used as it is.
 
 ## Usage
 Just add `ulid.zig` as a package to your project. No external dependencies.
