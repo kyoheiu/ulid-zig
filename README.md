@@ -1,6 +1,6 @@
 # ulid-zig
 
-Simple implementation of ULID for zig.
+Simple [ULID](https://github.com/ulid/spec) implementation for zig.
 
 This library started as a learning project, but IMO it can be used as it is.
 
